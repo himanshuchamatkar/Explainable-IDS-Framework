@@ -8,29 +8,41 @@ st.set_page_config(page_title="AI Realtime IDS", layout="wide")
 
 st.title("🔐 AI Powered Realtime Intrusion Detection System")
 
-FILE = "realtime_predictions.json"
+REALTIME_FILE = "realtime_predictions.json"
+SAMPLE_FILE = "sample_predictions.json"
 
 
 def load_data():
 
-    if not os.path.exists(FILE):
+    file_to_use = None
+
+    # Use realtime predictions if available
+    if os.path.exists(REALTIME_FILE):
+        file_to_use = REALTIME_FILE
+
+    # Otherwise use sample data
+    elif os.path.exists(SAMPLE_FILE):
+        file_to_use = SAMPLE_FILE
+
+    else:
         return pd.DataFrame()
 
     try:
-        with open(FILE) as f:
+        with open(file_to_use) as f:
             data = json.load(f)
+
         return pd.DataFrame(data)
 
-    except:
+    except Exception as e:
+        st.error(f"Error loading data: {e}")
         return pd.DataFrame()
 
 
 df = load_data()
 
 if df.empty:
-    st.warning("Waiting for realtime predictions...")
+    st.warning("Waiting for realtime predictions or sample data...")
     st.stop()
-
 
 # -------------------
 # Metrics
@@ -170,7 +182,7 @@ st.dataframe(
 st.divider()
 
 # -------------------
-# 🚨 Live Alerts
+# Live Alerts
 # -------------------
 
 st.subheader("🚨 Live Alerts")
@@ -226,5 +238,4 @@ if isinstance(shap_data, dict):
     st.plotly_chart(fig4, width="stretch")
 
 else:
-
     st.info("SHAP explanation not available yet.")
