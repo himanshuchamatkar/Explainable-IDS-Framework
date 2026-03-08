@@ -8,8 +8,8 @@ st.set_page_config(page_title="AI Realtime IDS", layout="wide")
 
 st.title("🔐 AI Powered Realtime Intrusion Detection System")
 
-REALTIME_FILE = "realtime_predictions.json"
-SAMPLE_FILE = "sample_predictions.json"
+REALTIME_FILE = "dashboard/realtime_predictions.json"
+SAMPLE_FILE = "dashboard/sample_predictions.json"
 
 
 def load_data():
