@@ -9,7 +9,11 @@ This project analyzes network traffic flows and classifies them as **BENIGN or A
 ## 🚀 Live Dashboard
 
 Streamlit App
-https://share.streamlit.io/himanshuchamatkar/Explainable-IDS-Framework
+
+explainable-ids-framework ∙ main ∙ dashboard/app.py
+
+
+
 
 ---
 
