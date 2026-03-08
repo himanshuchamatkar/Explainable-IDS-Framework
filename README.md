@@ -10,7 +10,7 @@ This project analyzes network traffic flows and classifies them as **BENIGN or A
 
 Streamlit App
 
-explainable-ids-framework ∙ main ∙ dashboard/app.py
+[explainable-ids-framework ∙ main ∙ dashboard/app.py](https://explainable-ids-framework-izkp6lirhnpftpexnx9ey2.streamlit.app/)
 
 
 
